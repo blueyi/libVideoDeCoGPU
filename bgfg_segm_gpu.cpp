@@ -103,7 +103,7 @@ int main(int argc, const char** argv)
     mog2->apply(d_frame, d_fgmask);
 
     double bg_time = ((cv::getTickCount() - bg_start) / cv::getTickFrequency()) * 1000;
-    std::cout << "Background update time elapse(GPU): " << bg_time << " ms" << std::endl;
+    std::cout << "Background update time elapse(GPU): ," << bg_time << ", ms" << std::endl;
 
     /*
        switch (m)
@@ -150,7 +150,7 @@ int main(int argc, const char** argv)
         mog2->apply(d_frame, d_fgmask);
 
         double bg_time = ((cv::getTickCount() - bg_start) / cv::getTickFrequency()) * 1000;
-        std::cout << "Background update time elapse(GPU): " << bg_time << " ms" << std::endl;
+        std::cout << "Background update time elapse(GPU): ," << bg_time << ", ms" << std::endl;
 
         mog2->getBackgroundImage(d_bgimg);
 

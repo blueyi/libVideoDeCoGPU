@@ -101,7 +101,7 @@ int main(int argc, const char** argv)
         bg_model->apply(img, fgmask, update_bg_model ? -1 : 0);
 
         double bg_time = ((cv::getTickCount() - bg_start) / cv::getTickFrequency()) * 1000;
-        std::cout << "Background update time elapse(CPU): " << bg_time << " ms" << std::endl;
+        std::cout << "Background update time elapse(CPU): ," << bg_time << ", ms" << std::endl;
 
         if( smoothMask )
         {
