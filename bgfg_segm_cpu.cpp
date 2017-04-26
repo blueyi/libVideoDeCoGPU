@@ -31,8 +31,8 @@ const char* keys =
 //this is a sample for foreground detection functions
 int main(int argc, const char** argv)
 {
-    help();
-    CommandLineParser parser(argc, argv, keys);
+//    help();
+//    CommandLineParser parser(argc, argv, keys);
     /*
 
        bool useCamera = parser.has("camera");
@@ -41,6 +41,10 @@ int main(int argc, const char** argv)
        string method = parser.get<string>("method");
        */
 
+    if (argc < 2) {
+        std::cout << "No input video file" << std::endl;
+        return -1;
+    }
     string file = argv[1];
     //    string file = "F:\\wyl\\1.avi";
     string method = "mog2";
@@ -56,7 +60,7 @@ int main(int argc, const char** argv)
        */
 
     cap.open(file.c_str());
-    parser.printMessage();
+//    parser.printMessage();
 
     if( !cap.isOpened() )
     {
@@ -64,10 +68,12 @@ int main(int argc, const char** argv)
         return -1;
     }
 
+    /*
     namedWindow("image", WINDOW_NORMAL);
     namedWindow("foreground mask", WINDOW_NORMAL);
     namedWindow("foreground image", WINDOW_NORMAL);
     namedWindow("mean background image", WINDOW_NORMAL);
+    */
 
     Ptr<BackgroundSubtractor> bg_model = method == "knn" ?
         createBackgroundSubtractorKNN().dynamicCast<BackgroundSubtractor>() :
@@ -112,12 +118,15 @@ int main(int argc, const char** argv)
         double fps = cv::getTickFrequency() / (cv::getTickCount() - start);
         std::cout << "FPS : " << fps << std::endl;
 
+        /*
         imshow("image", img);
         imshow("foreground mask", fgmask);
         imshow("foreground image", fgimg);
         if(!bgimg.empty())
             imshow("mean background image", bgimg );
+            */
 
+        /*
         char k = (char)waitKey(30);
         if( k == 27 ) break;
         if( k == ' ' )
@@ -128,6 +137,7 @@ int main(int argc, const char** argv)
             else
                 printf("Background update is off\n");
         }
+        */
     }
 
     return 0;

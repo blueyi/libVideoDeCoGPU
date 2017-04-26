@@ -23,6 +23,7 @@ enum Method
 int main(int argc, const char** argv)
 {
 
+    /*
     cv::CommandLineParser cmd(argc, argv,
                 "{ c camera |                    | use camera }"
                 "{ f file   | ../data/vtest.avi  | input video file }"
@@ -35,13 +36,21 @@ int main(int argc, const char** argv)
         cmd.printErrors();
         return 0;
     }
+    */
     /*
        bool useCamera = cmd.has("camera");
        string file = cmd.get<string>("file");
        string method = cmd.get<string>("method");
        */
+
+    if (argc < 2) {
+        std::cout << "No input video file" << std::endl;
+        return -1;
+    }
+
     bool useCamera = false;
     string file = argv[1];
+
 //    string file = "F:\\wyl\\1.avi";
     string method = "mog2";
     if (method != "mog"
@@ -117,6 +126,7 @@ int main(int argc, const char** argv)
        }
        */
 
+    /*
     namedWindow("image", WINDOW_NORMAL);
     namedWindow("foreground mask", WINDOW_NORMAL);
     namedWindow("foreground image", WINDOW_NORMAL);
@@ -124,6 +134,7 @@ int main(int argc, const char** argv)
     {
         namedWindow("mean background image", WINDOW_NORMAL);
     }
+    */
 
     for(;;)
     {
@@ -180,15 +191,18 @@ int main(int argc, const char** argv)
         if (!d_bgimg.empty())
             d_bgimg.download(bgimg);
 
+        /*
         imshow("image", frame);
         imshow("foreground mask", fgmask);
         imshow("foreground image", fgimg);
         if (!bgimg.empty())
             imshow("mean background image", bgimg);
+            
 
         char key = (char)waitKey(30);
         if (key == 27)
             break;
+            */
     }
 
     return 0;
